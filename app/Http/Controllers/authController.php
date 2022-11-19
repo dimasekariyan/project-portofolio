@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class authController extends Controller
 {
+    function index() {
+        return view('auth.index');
+    }
     function redirect() {
         return Socialite::driver('google')->redirect();
     }
@@ -28,11 +32,17 @@ class authController extends Controller
                 'google_id' => $id
                 ],
             );
-            return '<h1>Selamat Anda Berhasil Masuk</h1>';
+            Auth::login($user);
+            return redirect()->to('dashboard');
         }else {
-            return '<h1>Email Tidak Terdaftar</h1>';
+            return redirect()->to('auth')->with('error','Akun yang anda masukkan Tidak terdaftar, dan Tidak diperbolehkan masuk ke halaman Admin');
         }
 
         
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->to('auth');
     }
 }
