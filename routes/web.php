@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\authController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\halamanController;
 
 
 /*
@@ -27,6 +28,9 @@ Route::get('/auth/redirect', [authController::class,"redirect"])->middleware('is
 Route::get('/auth/callback', [authController::class,"callback"])->middleware('isTamu');
 Route::get('/auth/logout',[authController::class,"logout"]);
 
-Route::get('/dashboard', function () {
-    return 'Selamat Datang '.Auth::User()->email .' di halaman Dashboard';
-})->middleware('auth');
+Route::prefix('dashboard')->middleware('auth')->group(
+    function () {
+        Route::get('/', [halamanController::class, 'index']);
+        Route::resource('halaman', halamanController::class);
+    }
+);
