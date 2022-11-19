@@ -22,11 +22,11 @@ Route::get('/', function () {
 
 Route::redirect('home', 'dashboard');
 
-Route::get('/auth', [authController::class,"index"])->name('login')->middleware('guest');
-Route::get('/auth/redirect', [authController::class,"redirect"])->middleware('guest');
-Route::get('/auth/callback', [authController::class,"callback"])->middleware('guest');
+Route::get('/auth', [authController::class,"index"])->name('login')->middleware('isTamu');
+Route::get('/auth/redirect', [authController::class,"redirect"])->middleware('isTamu');
+Route::get('/auth/callback', [authController::class,"callback"])->middleware('isTamu');
 Route::get('/auth/logout',[authController::class,"logout"]);
 
-Route::get('/dashboard', function (){
+Route::get('/dashboard', function () {
     return 'Selamat Datang '.Auth::User()->email .' di halaman Dashboard';
 })->middleware('auth');

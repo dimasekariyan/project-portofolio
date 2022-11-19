@@ -32,6 +32,7 @@ class authController extends Controller
                 'google_id' => $id
                 ],
             );
+            
             Auth::login($user);
             return redirect()->to('dashboard');
         }else {
