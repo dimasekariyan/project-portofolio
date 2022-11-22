@@ -6,7 +6,7 @@
         @csrf
         <div class="row justify-content-between">
             <div class="col-5">
-                <h3>Profil Pengguna</h3>
+                <p class="card-title">Profil Pengguna</p>
                 @if (get_meta_value('_foto'))
                     <img style="max-width:100px;max-height:100px" src="{{ asset('foto'). '/' .get_meta_value('_foto') }}"
                 @endif

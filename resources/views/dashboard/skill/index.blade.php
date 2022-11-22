@@ -4,6 +4,7 @@
    
     <form action="{{ route('skill.update') }}" method="POST">
         @csrf
+        <p class="card-title">Skill</p>
         <div class="mb-3">
           <label for="judul" class="form-label">Bahasa Pemrograman</label>
           <input type="text"

@@ -105,6 +105,18 @@
               <span class="menu-title">Skill</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('profile.index') }}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Profil Pengguna</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('pengaturanhalaman.index') }}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Pengaturan Halaman</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
